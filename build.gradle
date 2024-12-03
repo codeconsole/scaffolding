@@ -2,7 +2,7 @@ plugins {
     id 'java-library'
     id 'org.grails.grails-plugin'
     id 'org.grails.grails-gsp'
-    id 'org.grails.internal.grails-plugin-publish'
+    id 'org.grails.grails-publish'
 }
 
 version = project.projectVersion
@@ -32,7 +32,6 @@ dependencies {
 }
 
 grailsPublish {
-    userOrg = 'grails'
     githubSlug = 'grails/scaffolding'
     license {
         name = 'Apache-2.0'
