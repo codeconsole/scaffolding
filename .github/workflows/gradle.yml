@@ -40,7 +40,6 @@ jobs:
           DEVELOCITY_BUILD_CACHE_NODE_KEY: ${{ secrets.GRADLE_ENTERPRISE_BUILD_CACHE_NODE_KEY }}
         run: >
           ./gradlew
-          -Dorg.gradle.internal.publish.checksums.insecure=true
           publish
       - name: "Generate Java & Groovydoc"
         run: ./gradlew javadoc groovydoc
