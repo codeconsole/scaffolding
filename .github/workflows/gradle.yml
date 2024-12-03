@@ -40,9 +40,10 @@ jobs:
           DEVELOCITY_BUILD_CACHE_NODE_KEY: ${{ secrets.GRADLE_ENTERPRISE_BUILD_CACHE_NODE_KEY }}
         run: >
           ./gradlew
-          -Dorg.gradle.internal.publish.checksums.insecure=true
           publish
-      - name: "📖 Publish Groovydoc to Github Pages"
+      - name: "Generate Java & Groovydoc"
+        run: ./gradlew javadoc groovydoc
+      - name: "📖 Publish docs to Github Pages"
         if: success() && github.event_name == 'push'
         uses: micronaut-projects/github-pages-deploy-action@grails
         env:
