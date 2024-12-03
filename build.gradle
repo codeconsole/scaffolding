@@ -19,16 +19,10 @@ java {
     }
 }
 
-dependencyManagement {
-    imports {
-        mavenBom "org.grails:grails-bom:$grailsVersion"
-    }
-    applyMavenExclusions false
-}
-
 dependencies {
+    implementation platform("org.grails:grails-bom:$grailsVersion")
     api "org.grails:grails-plugin-rest"
-    api "org.grails.plugins:fields:$fieldsVersion"
+    api "org.grails.plugins:fields"
     compileOnly "jline:jline"
 }
 
