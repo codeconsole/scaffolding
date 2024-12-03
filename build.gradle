@@ -29,6 +29,7 @@ dependencyManagement {
 dependencies {
     api "org.grails:grails-plugin-rest"
     api "org.grails.plugins:fields:$fieldsVersion"
+    compileOnly "jline:jline"
 }
 
 grailsPublish {
