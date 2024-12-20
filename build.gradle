@@ -11,13 +11,19 @@ group = 'org.grails.plugins'
 repositories {
     mavenCentral()
     maven { url = 'https://repo.grails.org/grails/core' }
-}
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+    if (System.getenv("GITHUB_MAVEN_PASSWORD") && !grailsVersion.endsWith('-SNAPSHOT')) {
+        System.out.println("Adding Grails Core Repo")
+        maven {
+            url = 'https://maven.pkg.github.com/grails/grails-core'
+            credentials {
+                username = 'DOES_NOT_MATTER'
+                password = System.getenv("GITHUB_MAVEN_PASSWORD")
+            }
+        }
     }
 }
+
+compileJava.options.release = 17
 
 dependencies {
     implementation platform("org.grails:grails-bom:$grailsVersion")
